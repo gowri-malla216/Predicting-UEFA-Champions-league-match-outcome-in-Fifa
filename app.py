@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 from pyspark.sql import SparkSession
-# from pyspark.ml.feature import VectorAssembler
-import pickle
+import fickling
 
 app = Flask(__name__)
 
@@ -37,7 +36,7 @@ fifa_20_data = version_dataframes[20]
 
 def load_model(fifa_version):
     with open(f'model_{fifa_version}.pkl', 'rb') as file:
-        model = pickle.load(file)
+        model = fickling.load(file)
     return model
 
 def calculate_win_probability(overall_attack, overall_mid, overall_defense):
